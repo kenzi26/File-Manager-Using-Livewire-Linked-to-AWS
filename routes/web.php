@@ -10,6 +10,7 @@ use App\Livewire\Admin\ApproveUser;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Admin\Login as AdminLogin;
 use App\Livewire\Admin\Dashboard as AdminDashboard;
+use App\Livewire\Admin\Document as AdminDocument;
 
 
 
@@ -47,7 +48,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/dashboard', AdminDashboard::class)->name('admin.dashboard');
     Route::get('/admin/category', Category::class)->name('admin.category');
     Route::get('/admin/users', ApproveUser::class)->name('admin.users');
-    
+    Route::get('/admin/document', AdminDocument::class)->name('admin.document');
 });
 
 
