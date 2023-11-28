@@ -38,6 +38,7 @@
                     <a class="dropdown-item" href="#">Settings</a>
                     <a class="dropdown-item" href="#">Activity Log</a>
                     <div class="dropdown-divider"></div>
+                    @livewire('user.logout')
                     
 
                 </div>
