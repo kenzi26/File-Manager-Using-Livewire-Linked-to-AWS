@@ -35,7 +35,7 @@ class Document extends Component
         return view('livewire.user.document', compact('documents'))->layout('layouts.user-app');
     }
 
-    public function goBack()
+    public function goback()
     {
         $this->showTable = true;
         $this->createForm = false;
@@ -73,7 +73,7 @@ class Document extends Component
             session()->flash('success', 'Document uploaded successfully');
             $this->title = "";
             $this->document = "";
-            $this->goBack();
+            $this->goback();
         }
     }
     
@@ -109,7 +109,7 @@ class Document extends Component
             $this->edit_title = "";
             $this->new_document = "";
             $this->old_document = "";
-            $this->goBack();
+            $this->goback();
         }
     }
 
