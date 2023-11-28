@@ -1,8 +1,9 @@
 <?php
 
 use App\Livewire\User\Login;
-use App\Livewire\User\Register;
+use App\Livewire\User\Document;
 
+use App\Livewire\User\Register;
 use App\Livewire\Admin\Category;
 use App\Livewire\User\Dashboard;
 use App\Livewire\Admin\ApproveUser;
@@ -27,11 +28,15 @@ use App\Livewire\Admin\Dashboard as AdminDashboard;
 ;
 
 
+Route::middleware(['guest'])->group(function () {
+    Route::get('/', Register::class)->name('user.register');
+    Route::get('/login', Login::class)->name('user.login');
+});
 
-
-Route::get('/', Register::class)->name('user.register');
-Route::get('/login', Login::class)->name('user.login');
-Route::get('/user/dashboard', Dashboard::class)->name('user.dashboard');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/user/dashboard', Dashboard::class)->name('user.dashboard');
+    Route::get('/user/document', Document::class)->name('user.documents');
+});
 
 Route::middleware(['guest:admin'])->group(function () {
     Route::get('/admin/login', AdminLogin::class)->name('admin.login');
