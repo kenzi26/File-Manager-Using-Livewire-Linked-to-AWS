@@ -4,8 +4,9 @@ namespace App\Livewire\User;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Document as ModelDocument;
 
 class Document extends Component
@@ -47,29 +48,35 @@ class Document extends Component
         $this->createForm = true;
     }
 
+        
     public function create()
     {
         $document = new ModelDocument();
         $this->validate([
             'title' => ['required'],
-            'document' => ['required'],
+            'document' => ['required', 'file'],
         ]);
+    
         $filename = "";
         if ($this->document) {
-            $filename = $this->document->store('documents', 'public');
+            // Use S3 disk for storage
+            $path = 'documents/' . Auth::user()->first_name . '_' . Auth::user()->last_name;
+            $filename = $this->document->store($path, 's3');
         }
+    
         $document->title = $this->title;
         $document->user_id = Auth::user()->id;
         $document->document = $filename;
         $result = $document->save();
+    
         if ($result) {
-            session()->flash('success', 'Document upload Successfully');
+            session()->flash('success', 'Document uploaded successfully');
             $this->title = "";
             $this->document = "";
             $this->goBack();
         }
     }
-
+    
     public function edit($id)
     {
         $this->showTable = false;
@@ -88,11 +95,9 @@ class Document extends Component
         ]);
         $filename = "";
         if ($this->new_document) {
-            $path = public_path('storage\\') . $documents->document;
-            if (File::exists($path)) {
-                File::delete($path);
-            }
-            $filename = $this->new_document->store('documents', 'public');
+            Storage::disk('s3')->delete($documents->document);
+            $path = 'documents/' . Auth::user()->first_name . '_' . Auth::user()->last_name;
+            $filename = $this->new_document->store($path, 's3'); // Use 's3' disk
         } else {
             $filename = $this->old_document;
         }
@@ -111,11 +116,11 @@ class Document extends Component
     public function delete($id)
     {
         $documents = ModelDocument::findOrFail($id);
-        $path = public_path('storage\\') . $documents->document;
-        if (File::exists($path)) {
-            File::delete($path);
-        }
+
+        Storage::disk('s3')->delete($documents->document); // Use 's3' disk
+
         $result = $documents->delete();
+
         if ($result) {
             session()->flash('success', 'Document Delete Successfully');
         }
