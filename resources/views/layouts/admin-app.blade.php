@@ -47,11 +47,11 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="/admin/dashboard">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
-                            <a class="nav-link" href="{{ route('admin.category') }}">
+                        <a class="nav-link" href="{{ route('admin.category') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Category
                         </a>
@@ -78,7 +78,7 @@
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid">
                     <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Kenechukwu 2023</div>
+                        <div class="text-muted">Copyright &copy; Kenechukwu</div>
                         <div>
                             <a href="#">Privacy Policy</a>
                             &middot;
