@@ -54,14 +54,15 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
-                        <a class="nav-link" href=>
+                        <a class="nav-link" href="{{ route('user.documents') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Document
                         </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
-                    
+                    <div class="small">Logged in as:</div>
+                    {{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}
                 </div>
             </nav>
         </div>

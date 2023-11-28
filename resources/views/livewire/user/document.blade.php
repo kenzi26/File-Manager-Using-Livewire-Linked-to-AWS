@@ -43,7 +43,7 @@
                                     <tr>
                                         <td>{{ $document->id }}</td>
                                         <td>{{ $document->title }}</td>
-                                        <td>{{ $document->users->fname . ' ' . $document->users->lname }}</td>
+                                        <td>{{ $document->users->first_name . ' ' . $document->users->last_name }}</td>
                                         <td>{{ $document->document }}</td>
                                         <td><button wire:click='edit({{ $document->id }})'
                                                 class="btn btn-primary">Edit</button></td>
