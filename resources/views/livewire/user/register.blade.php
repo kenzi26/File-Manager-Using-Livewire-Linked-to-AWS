@@ -13,11 +13,10 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="small mb-1" for="">First
-                                            Name</label>
-                                        <input class="form-control py-4" wire:model='fname' type="text"
+                                        <label class="small mb-1" for="">First Name</label>
+                                        <input class="form-control py-4" wire:model='first_name' type="text"
                                             placeholder="Enter first name" />
-                                        @error('fname')
+                                        @error('first_name')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
 
@@ -26,10 +25,10 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="small mb-1">Last Name</label>
-                                        <input class="form-control py-4" wire:model='lname' type="text"
+                                        <input class="form-control py-4" wire:model='last_name' type="text"
                                             placeholder="Enter last name" />
-                                        @error('lname')
-                                            <span class="text-danger">{{ $lname }}</span>
+                                        @error('last_name')
+                                            <span class="text-danger">{{ $last_name }}</span>
                                         @enderror
                                     </div>
                                 </div>

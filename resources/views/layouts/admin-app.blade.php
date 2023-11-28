@@ -51,11 +51,11 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
-                        
+                            <a class="nav-link" href="{{ route('admin.category') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Category
                         </a>
-                        
+                        <a class="nav-link" href="{{ route('admin.users') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Users
                         </a>
@@ -78,7 +78,7 @@
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid">
                     <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2020</div>
+                        <div class="text-muted">Copyright &copy; Kenechukwu 2023</div>
                         <div>
                             <a href="#">Privacy Policy</a>
                             &middot;
