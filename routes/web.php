@@ -43,7 +43,7 @@ Route::middleware(['guest:admin'])->group(function () {
     Route::get('/admin/login', AdminLogin::class)->name('admin.login');
 });
 
-
+//admin
 Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/dashboard', AdminDashboard::class)->name('admin.dashboard');
     Route::get('/admin/category', Category::class)->name('admin.category');
